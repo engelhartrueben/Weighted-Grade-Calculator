@@ -1,5 +1,4 @@
 """integer form to check user input"""
-import numbers
 
 class IntegerForm():
 
