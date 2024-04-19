@@ -1,4 +1,7 @@
-from forms.float_form import fltForm
+import sys
+sys.path.insert(1, '/home/ruby/school/practical_programming/wgc')
+
+from forms.float_form import FloatForm
 
 """Testing the float form"""
 def test_integer_form():
@@ -10,14 +13,14 @@ def test_integer_form():
         'pass_test_cases' : {
             # Ints pass
             # Can be turned into a float
-            'int_pass_1' : 24,
-            'int_pass_2' : 0,
-            'string_int_pass_1' : '24',
-            'string_int_pass_2' : '300',
-            'flt_pass_3' : 1.1,
-            'flt_pass_4' : 92.6,
-            'string_flt_pass' : '11.1',
-            'string_flt_pass' : '121.1'
+            'string_int_pass_1' : ('44', 44.0),
+            'string_int_pass_2' : ('0', 0.0),
+            'string_int_pass_3' : ('24', 24.0),
+            'string_int_pass_4' : ('300', 300.),
+            'string_flt_pass_1' : ('1.1', 1.1),
+            'string_flt_pass_2' : ('92.6', 92.6),
+            'string_flt_pass_3' : ('11.1', 11.1),
+            'string_flt_pass_4' : ('121.1', 121.1)
         },
         'fail_test_cases' : {
             'int_fail_1' : -1,
@@ -34,8 +37,14 @@ def test_integer_form():
         }
     }
     
+    check = FloatForm()
+
     for test_suits in test_cases:
-        for _, val in test_cases[test_suits]:
+        for key in test_cases[test_suits]:
+            value = test_cases[test_suits][key]
             # Need to to decide what is returned
             # to show proper/improper input
-            assert fltForm(val)
+            if test_suits == 'pass_test_cases':
+                assert check.check_float(value[0]) == value[1]
+            else:
+                assert check.check_float(value) == None

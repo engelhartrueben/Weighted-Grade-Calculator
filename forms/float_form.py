@@ -6,10 +6,11 @@ class FloatForm():
         if not isinstance(input, str):
             return None
         else:
-            input = input.strip()
             try:
-                float = float(input)
-                return float
+                input = float(input)
+                # Checks if greater than 0
+                if input >= 0:
+                    return input
             except ValueError:
                 return None
             
