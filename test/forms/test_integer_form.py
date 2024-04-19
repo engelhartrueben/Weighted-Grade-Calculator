@@ -18,7 +18,11 @@ def test_integer_form():
             'flt_fail_1' : -1.5,
             'flt_fail_2' : -87.3,
             'string_fail_1' : "1peach2",
-            'string_fail_2' : "-25"
+            'string_fail_2' : "-25",
+            # unsure about testing types
+            'type_obj_fail' : {'bad' : 'superbad'},
+            'type_set_fail' : (2, 'bad'),
+            'type_list_fail' : ['bad', 2]
         }
     }
     
