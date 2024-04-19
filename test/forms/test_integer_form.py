@@ -1,4 +1,7 @@
-from forms.integer_form import intForm
+import sys
+sys.path.insert(1, '/home/ruby/school/practical_programming/wgc')
+
+from forms.integer_form import IntegerForm
 
 """Testing the integer form"""
 def test_integer_form():
@@ -8,10 +11,10 @@ def test_integer_form():
     """
     test_cases ={
         'pass_test_cases' : {
-            'int_pass_1' : 24,
-            'int_pass_2' : 0,
-            'string_int_pass_1' : "24",
-            'string_int_pass_2' : "300"
+            'int_pass_1' : (24, 24),
+            'int_pass_2' : (0, 0),
+            'string_int_pass_1' : ("24", 24),
+            'string_int_pass_2' : ("300", 300)
         },
         'fail_test_cases' : {
             'int_fail_1' : -1,
@@ -31,7 +34,8 @@ def test_integer_form():
     }
     
     for test_suits in test_cases:
-        for _, val in test_cases[test_suits]:
+        for val in test_cases[test_suits]:
             # Need to to decide what is returned
             # to show proper/improper input
-            assert intForm(val)
+            if test_cases == 'pass_test_cases':
+                assert IntegerForm.check_integer(val[1]) == val[2] 
