@@ -10,8 +10,8 @@ def test_integer_form():
         'pass_test_cases' : {
             'int_pass_1' : 24,
             'int_pass_2' : 0,
-            'string_pass_1' : "24",
-            'string_pass_2' : "300"
+            'string_int_pass_1' : "24",
+            'string_int_pass_2' : "300"
         },
         'fail_test_cases' : {
             'int_fail_1' : -1,
