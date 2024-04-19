@@ -9,6 +9,7 @@ class IntegerForm():
             input = input.strip()
             try:
                 int = int(input)
+                return int
             except ValueError:
                 return None
             
