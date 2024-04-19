@@ -10,10 +10,8 @@ def test_string_form():
             'str_pass_1' : ('Math', 'Math'),
             'str_pass_2' : ('enGlIsh', 'English'),
             'str_pass_3' : ('maTH 207', 'Math 207'),
-            # This fails currently
-            # Changest 137 CS to 137 cs
-            # Should probably keep the capital letters
             'str_pass_4' : ('137 CS', '137 CS'),
+            'str_pass_5' : ('mat 217', 'MAT 217'),
             # bit of user freedom with this one,
             # can't control everything
             'str_pass_5' : ('% soci 3033', '% Soci 3033'),
