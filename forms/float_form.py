@@ -1,4 +1,4 @@
-
+"""Float form to check user input is flaot"""
 
 class FloatForm():
     def check_integer(self, input):
