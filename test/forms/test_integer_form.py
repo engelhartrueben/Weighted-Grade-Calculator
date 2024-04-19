@@ -2,7 +2,10 @@ from forms.integer_form import intForm
 
 """Testing the integer form"""
 def test_integer_form():
-    """tests good an bad user inputs"""
+    """
+    Tests good an bad user inputs.
+    Only postive integers.
+    """
     test_cases ={
         'pass_test_cases' : {
             'int_pass_1' : 24,
