@@ -7,10 +7,8 @@ class IntegerForm():
             return None
         else:
             try:
-                input = int(input)
-                # Checks if greater than 0
-                if input >= 0:
-                    return input
+                if int(input) == float(input) and int(input) >= 0:
+                    return int(input)
             except ValueError:
                 return None
             
