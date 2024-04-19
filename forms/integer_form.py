@@ -1,7 +1,6 @@
 """integer form to check user input"""
 
 class IntegerForm():
-
     def check_integer(self, input):
         # Check if its a string or numbers type
         if not isinstance(input, str):
