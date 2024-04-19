@@ -7,8 +7,6 @@ def test_integer_form():
         'pass_test_cases' : {
             'int_pass_1' : 24,
             'int_pass_2' : 0,
-            'flt_pass_1' : 1.1,
-            'flt_pass_2' : 92.6,
             'string_pass_1' : "24",
             'string_pass_2' : "300"
         },
@@ -17,6 +15,8 @@ def test_integer_form():
             'int_fail_2' : -101,
             'flt_fail_1' : -1.5,
             'flt_fail_2' : -87.3,
+            'flt_fail_3' : 1.1,
+            'flt_fail_4' : 92.6,
             'string_fail_1' : "1peach2",
             'string_fail_2' : "-25",
             # unsure about testing types
