@@ -10,13 +10,13 @@ def test_integer_form():
     Only postive integers.
     """
     test_cases ={
-        'pass_test_cases' : {
-            'int_pass_1' : (24, 24),
-            'int_pass_2' : (0, 0),
-            'string_int_pass_1' : ("24", 24),
-            'string_int_pass_2' : ("300", 300)
+        'pass_test_cases':{
+            'string_int_pass_1' : ("44", 44),
+            'string_int_pass_2' : ("0", 0),
+            'string_int_pass_3' : ("24", 24),
+            'string_int_pass_4' : ("300", 300)
         },
-        'fail_test_cases' : {
+        'fail_test_cases':{
             'int_fail_1' : -1,
             'int_fail_2' : -101,
             'flt_fail_1' : -1.5,
@@ -33,9 +33,14 @@ def test_integer_form():
         }
     }
     
-    for test_suits in test_cases:
-        for val in test_cases[test_suits]:
+    check = IntegerForm()
+
+    for test_suit in test_cases:
+        for key in test_cases[test_suit]:
+            value = test_cases[test_suit][key]
             # Need to to decide what is returned
             # to show proper/improper input
-            if test_cases == 'pass_test_cases':
-                assert IntegerForm.check_integer(val[1]) == val[2] 
+            if test_suit == 'pass_test_cases':
+                assert check.check_integer(value[0]) == value[1]
+            else:
+                assert check.check_integer(value) == None
