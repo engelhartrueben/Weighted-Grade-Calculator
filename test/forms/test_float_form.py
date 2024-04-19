@@ -29,6 +29,8 @@ def test_integer_form():
             'flt_fail_2' : -87.3,
             'string_fail_1' : "91peach2",
             'string_fail_2' : "-45",
+            'bool_fail_1' : True,
+            'bool_fail_2' : False,
             # unsure about testing types
             'type_obj_fail' : {'bad' : 'superbad'},
             'type_tuple_fail' : (2, 'bad',),
