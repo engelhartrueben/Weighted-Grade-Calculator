@@ -31,6 +31,7 @@ def test_integer_form():
             'string_fail_2' : "-45",
             'bool_fail_1' : True,
             'bool_fail_2' : False,
+            'none_fail' : None,
             # unsure about testing types
             'type_obj_fail' : {'bad' : 'superbad'},
             'type_tuple_fail' : (2, 'bad',),

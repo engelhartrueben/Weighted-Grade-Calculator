@@ -25,6 +25,7 @@ def test_string_form():
             'flt_fail_2' : -905.6,
             'bool_fail_1' : True,
             'bool_fail_2' : False,
+            'none_fail' : None,
              # unsure about testing types
             'type_obj_fail' : {'really' : 'silly'},
             'type_tuple_fail' : (2, 'really',),
