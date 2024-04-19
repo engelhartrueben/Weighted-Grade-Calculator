@@ -26,7 +26,7 @@ def test_string_form():
         }
     }
 
-    for test_suits, _ in test_cases:
+    for test_suits in test_cases:
         for _, val in test_cases[test_suits]:
             # Need to to decide what is returned
             # to show proper/improper input
