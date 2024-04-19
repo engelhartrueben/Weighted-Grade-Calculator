@@ -16,4 +16,10 @@ class StringForm():
         if not isinstance(input, str):
             return None
         else:
-            return input
+            input = input.split(' ')
+            final_input = []
+            for spaces in input:
+                spaces = [*spaces.lower()]
+                spaces[0] = spaces[0].upper()
+                final_input.append("".join(spaces))
+            return " ".join(final_input)

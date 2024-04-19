@@ -8,12 +8,15 @@ def test_string_form():
         'pass_test_cases' : {
             # Should probably add some formatting rules...
             'str_pass_1' : ('Math', 'Math'),
-            'str_pass_2' : ('enGlIsh', 'enGlIsh'),
-            'str_pass_3' : ('maTH 207', 'maTH 207'),
+            'str_pass_2' : ('enGlIsh', 'English'),
+            'str_pass_3' : ('maTH 207', 'Math 207'),
+            # This fails currently
+            # Changest 137 CS to 137 cs
+            # Should probably keep the capital letters
             'str_pass_4' : ('137 CS', '137 CS'),
             # bit of user freedom with this one,
             # can't control everything
-            'str_pass_5' : ('% soci 3033', '% soci 3033'),
+            'str_pass_5' : ('% soci 3033', '% Soci 3033'),
             'str_pass_6' : ('6578', '6578')
         },
         'fail_test_cases' : {
@@ -43,3 +46,4 @@ def test_string_form():
                 assert check.check_string(value[0]) == value[1]
             else:
                 assert check.check_string(value) == None
+test_string_form()
