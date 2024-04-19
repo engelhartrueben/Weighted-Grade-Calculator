@@ -21,8 +21,9 @@ def test_integer_form():
             'string_fail_2' : "-25",
             # unsure about testing types
             'type_obj_fail' : {'bad' : 'superbad'},
-            'type_set_fail' : (2, 'bad'),
-            'type_list_fail' : ['bad', 2]
+            'type_tuple_fail' : (2, 'bad',),
+            'type_set_fail' : {'apple', 'orange'},
+            'type_list_fail' : ['bad', 7]
         }
     }
     
