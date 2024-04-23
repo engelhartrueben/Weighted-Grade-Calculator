@@ -5,7 +5,7 @@ class App:
         self.engine = AppEngine(grade_items)
 
     def run(self):
-        """rotatin function for user input"""
+        """rotating function for user input"""
         # Add in intial welcomd message here
         print("Welcome to Weighted Grade Calculator!"/
               " At any time, type '-h' for help!")
@@ -17,6 +17,7 @@ class App:
             
             # Exit logic
             if not self.engine.continue_execution:
+                # improper
                 break
 
     def execute_command(self, cmd):
