@@ -28,14 +28,23 @@ class Student:
 
     def run(self):
         self.student_name = self.get_student_name()
+
         self.assignment_grades = self.get_grades("Assignment", self.assignemt_count)
+        self.assignment_overall_grade = self.get_weighted_grade(self.assignment_grades, .2)
+
         self.quiz_grades = self.get_grades("Quiz", self.quiz_count)
+        self.quiz_overall_grade = self.get_weighted_grade(self.quiz_grades, .2)
+
         self.project_grades = self.get_grades("Project", self.project_count)
-        print(self.student_name, self.total_grade)
-        return [
-            self.student_name,
-            self.total_grade
-        ]
+        self.project_overall_grade = self.get_weighted_grade(self.project_grades, .5)
+
+        self.absent_count = self.get_absent_amount()
+        self.absent_grade = self.get_absent_grade(self.absent_count)
+
+        self.total_grade = self.get_total_grade(self.assignment_overall_grade,
+                                                self.quiz_overall_grade,
+                                                self.project_overall_grade,
+                                                self.absent_grade)
 
     def get_student_name(self):
         """sets students name"""
@@ -71,19 +80,18 @@ class Student:
             if not cmd:
                 print("Please enter an integer!")
             else:
-                self.absent_count = cmd
-        if self.absent_count > 3:
-            self.absent_grade = (.1 - .02 * (self.absent_count - 3))
+                return cmd
+    
+    def get_absent_grade(self, amount):
+        if amount > 3:
+            return (.1 - .02 * (amount - 3))
         else:
-            self.absent_grade = .1
+            return .1
 
     def get_weighted_grade(self, arr, weight):
         avg_grade = sum(arr) / len(arr)
         return avg_grade * weight
     
-    def get_total_grade(self):
-        self.total_grade = (
-            self.assignment_overall_grade +
-            self.quiz_overall_grade +
-            self.assignment_overall_grade
-        )
+    def get_total_grade(self, a, q, p, ab):
+        total = a + q + p + ab
+        return total
