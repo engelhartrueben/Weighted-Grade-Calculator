@@ -38,7 +38,6 @@ class Student(AppEngine):
                 print("Invalid Student Name!")
             else:
                 self.name = cmd
-                break
     
     def get_assignment_grades(self, count):
         pass
@@ -57,5 +56,4 @@ class Student(AppEngine):
                 print("Please enter an integer!")
             else:
                 self.absent_count = cmd
-                break
-
+        
