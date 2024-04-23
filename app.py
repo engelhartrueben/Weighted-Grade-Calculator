@@ -27,7 +27,7 @@ class App:
         elif cmd in ('-h', '-help'):
             # call on a preformatted help
             # message
-            self.engine.message = "this or that"
+            self.engine.help()
 
 if __name__ == '__main__':
     # Eventually would like this to be dynamic.

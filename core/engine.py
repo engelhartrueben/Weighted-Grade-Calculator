@@ -15,3 +15,8 @@ class AppEngine():
     def exit(self):
         self.message = "Have a nice day!"
         self.continue_execution = False
+    
+    def help(self):
+        """Help comments"""
+        # Add this in towards the end?
+        self.message = None
