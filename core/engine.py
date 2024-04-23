@@ -34,7 +34,7 @@ class AppEngine:
             if not class_name:
                 # Not entirely neccessary due to how
                 # check_string works. Not many things to 
-                # throw it off. Oh well
+                # throw it off. Oh well. At least it formats
                 print("Invalid Class Name!")
             else:
                 self.class_name = class_name
