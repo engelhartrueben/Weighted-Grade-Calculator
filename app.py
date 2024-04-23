@@ -31,6 +31,9 @@ class App:
             self.engine.message = "this or that"
 
 if __name__ == '__main__':
+    # Eventually would like this to be dynamic.
+    # As in the user can customize based on their
+    # class
     grade_items = [
         'Quizzes',
         'Projects',
