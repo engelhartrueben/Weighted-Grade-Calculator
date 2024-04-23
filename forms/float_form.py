@@ -1,6 +1,6 @@
 """Float form to check user input is flaot"""
 
-class FloatForm():
+class FloatForm:
     def check_float(self, input):
         # Check if its a string type
         if not isinstance(input, str):
