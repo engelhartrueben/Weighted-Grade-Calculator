@@ -1,4 +1,5 @@
 from forms.name_form import NameForm
+from forms.string_form import StringForm
 
 class AppEngine:
     def __init__(self, grade_item=None):
@@ -6,6 +7,7 @@ class AppEngine:
         self.continue_execution = True
         self.grade_item = grade_item
         self.student_name = None
+        self.class_name = None
 
     def get_student_name(self):
         prompt = "Enter Student's Name: "
@@ -13,9 +15,19 @@ class AppEngine:
             cmd = input(prompt)
             name = NameForm.check_name(cmd)
             if not name:
-                self.message("Invalid Name!")
+                self.message("Invalid Student Name!")
             else:
                 self.name = name
+    
+    def get_class_name(self):
+        prompt = "Enter Class Name: "
+        while not self.class_name:
+            cmd = input(prompt)
+            class_name = StringForm.check_string(cmd)
+            if not class_name:
+                self.Message("Invalid Class Name!")
+            else:
+                self.class_name = class_name
             
     def add_grade(self):
         pass
