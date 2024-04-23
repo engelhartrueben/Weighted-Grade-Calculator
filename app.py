@@ -9,7 +9,11 @@ class App:
         # Add in intial welcomd message here
         print("Welcome to Weighted Grade Calculator!"
               " At any time, type '-h' for help!\n")
-        # Would like to add a basic 2d render
+        # Gets class name
+        self.engine.get_class_name()
+        # Gets counts of assignments, quizzes, and projects
+        self.engine.get_counts()
+
         while True:
             # This will have to change.
             # No point in asking this once you get farther
