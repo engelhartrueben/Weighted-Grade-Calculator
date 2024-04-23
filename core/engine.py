@@ -11,3 +11,7 @@ class AppEngine():
 
     def calculate_grade(self):
         pass
+
+    def exit(self):
+        self.message = "Have a nice day!"
+        self.continue_execution = False

@@ -21,10 +21,9 @@ class App:
 
     def execute_command(self, cmd):
         if cmd in ('q', 'quit', 'exit'):
-            self.engine.continue_execution = False
+            self.engine.exit()
             # Maybe add logic to save current work.
             # tinyDB?
-            self.engine.message = "Have a nice day!"
         elif cmd in ('-h', '-help'):
             # call on a preformatted help
             # message
