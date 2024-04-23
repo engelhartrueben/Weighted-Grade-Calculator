@@ -6,8 +6,12 @@ from forms.name_form import NameForm
 from forms.integer_form import IntegerForm
 
 class Student:
-    def __init__(self, a_count, q_count, p_count):
-        self.student_name = None
+    def __init__(self, 
+                 a_count, 
+                 q_count, 
+                 p_count, 
+                 student_name=None):
+        self.student_name = student_name
         self.assignemt_count = a_count
         self.assignment_grades = None
         self.assignment_overall_grade = None
@@ -19,13 +23,19 @@ class Student:
         self.project_overall_grade = None
         self.absent_count = None
         self.absent_grade = None
+        self.total_grade = None
         self.run()
 
     def run(self):
         self.student_name = self.get_student_name()
-        self.get_assignment_grades = self.get_assignment_grades(self.assignemt_count)
-        self.get_quiz_grades = self.get_quiz_grades(self.quiz_count)
-        self.get_project_grades = self.get_project_grades(self.project_count)
+        self.assignment_grades = self.get_grades("Assignment", self.assignemt_count)
+        self.quiz_grades = self.get_grades("Quiz", self.quiz_count)
+        self.project_grades = self.get_grades("Project", self.project_count)
+        print(self.student_name, self.total_grade)
+        return [
+            self.student_name,
+            self.total_grade
+        ]
 
     def get_student_name(self):
         """sets students name"""
@@ -40,46 +50,19 @@ class Student:
                 # containing to this func
                 print("Invalid Student Name!")
             else:
-                self.student_name = cmd
-    
-    def get_assignment_grades(self, count):
+                return cmd
+            
+    def get_grades(self, type, count):
         grades = []
         for i in range(1, count+1):
-            prompt = f"Enter grade for Assignment #{i}: "
+            prompt = f"Enter grade for {type} #{i}: "
             while len(grades) < i:
                 cmd = IntegerForm.check_integer(self, input(prompt))
                 if not cmd:
                     print("Please enter a float!")
                 else:
                     grades.append(cmd)
-        self.assignment_grades = grades
-        self.assignment_overall_grade = self.get_weighted_grade(grades, .2)
-
-    def get_quiz_grades(self, count):
-        grades = []
-        for i in range(1, count+1):
-            prompt = f"Enter grade for Quiz #{i}: "
-            while len(grades) < i:
-                cmd = IntegerForm.check_integer(self, input(prompt))
-                if not cmd:
-                    print("Please enter a float!")
-                else:
-                    grades.append(cmd)
-        self.quiz_grades = grades
-        self.quiz_overall_grade = self.get_weighted_grade(grades, .2)
-
-    def get_project_grades(self, count):
-        grades = []
-        for i in range(1, count+1):
-            prompt = f"Enter grade for Project #{i}: "
-            while len(grades) < i:
-                cmd = IntegerForm.check_integer(self, input(prompt))
-                if not cmd:
-                    print("Please enter a float!")
-                else:
-                    grades.append(cmd)
-        self.project_grades = grades
-        self.project_overall_grade = self.get_weighted_grade(grades, .5)
+        return grades
 
     def get_absent_amount(self):
         prompt = f"How many class sessions did {self.student_name} miss this semester? "
@@ -97,3 +80,10 @@ class Student:
     def get_weighted_grade(self, arr, weight):
         avg_grade = sum(arr) / len(arr)
         return avg_grade * weight
+    
+    def get_total_grade(self):
+        self.total_grade = (
+            self.assignment_overall_grade +
+            self.quiz_overall_grade +
+            self.assignment_overall_grade
+        )
