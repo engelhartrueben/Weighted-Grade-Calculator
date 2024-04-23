@@ -10,6 +10,10 @@ class AppEngine:
         self.class_name = None
 
     def get_student_name(self):
+        """sets students name"""
+        # will have to make this dynamic
+        # in order to support more than one
+        # studen. i.e. an entire class
         prompt = "Enter Student's Name: "
         while not self.student_name:
             cmd = input(prompt)
@@ -20,6 +24,7 @@ class AppEngine:
                 self.name = name
     
     def get_class_name(self):
+        """sets class name for this session"""
         prompt = "Enter Class Name: "
         while not self.class_name:
             cmd = input(prompt)
@@ -36,6 +41,7 @@ class AppEngine:
         pass
 
     def exit(self):
+        """exits application"""
         self.message = "Have a nice day!"
         self.continue_execution = False
     
