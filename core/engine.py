@@ -19,7 +19,9 @@ class AppEngine:
             cmd = input(prompt)
             name = NameForm.check_name(cmd)
             if not name:
-                self.message("Invalid Student Name!")
+                # not sending to self.message
+                # containing to this func
+                print("Invalid Student Name!")
             else:
                 self.name = name
     
