@@ -12,6 +12,7 @@ class AppEngine:
         self.quiz_count = None
         self.project_count = None
         self.class_grades = {}
+        self.student_id = 0
     
     def get_class_name(self):
         """sets class name for this session"""
@@ -49,7 +50,12 @@ class AppEngine:
                 self.project_count = cmd
     
     def get_student_information(self):
-        Student.run()
+        student_dict = self.class_grades
+        student_dict.update({self.student_id: Student(self.assignment_count,
+                                                              self.quiz_count,
+                                                              self.project_count)})
+        self.class_grades = student_dict
+        self.student_id+=1
             
     def add_grade(self):
         pass
