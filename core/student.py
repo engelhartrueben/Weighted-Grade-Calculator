@@ -56,4 +56,7 @@ class Student(AppEngine):
                 print("Please enter an integer!")
             else:
                 self.absent_count = cmd
-        
+        if self.absent_count > 3:
+            self.absent_grade = (.1 - .02 * (self.absent_count - 3))
+        else:
+            self.absent_grade = .1
