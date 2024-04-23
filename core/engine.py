@@ -1,36 +1,21 @@
-from forms.name_form import NameForm
 from forms.string_form import StringForm
+from forms.integer_form import IntegerForm
 
 class AppEngine:
     def __init__(self, grade_item=None):
         self.message = None
         self.continue_execution = True
         self.grade_item = grade_item
-        self.student_name = None
         self.class_name = None
-
-    def get_student_name(self):
-        """sets students name"""
-        # will have to make this dynamic
-        # in order to support more than one
-        # studen. i.e. an entire class
-        prompt = "Enter Student's Name: "
-        while not self.student_name:
-            cmd = input(prompt)
-            name = NameForm.check_name(cmd)
-            if not name:
-                # not sending to self.message
-                # containing to this func
-                print("Invalid Student Name!")
-            else:
-                self.name = name
+        self.assignment_count = None
+        self.quiz_count = None
+        self.project_count = None
     
     def get_class_name(self):
         """sets class name for this session"""
         prompt = "Enter Class Name: "
         while not self.class_name:
-            cmd = input(prompt)
-            class_name = StringForm.check_string(self, cmd)
+            class_name = StringForm.check_string(self, input(prompt))
             if not class_name:
                 # Not entirely neccessary due to how
                 # check_string works. Not many things to 
@@ -38,6 +23,28 @@ class AppEngine:
                 print("Invalid Class Name!")
             else:
                 self.class_name = class_name
+    
+    def get_counts(self):
+        """gets total amount of counts of"""
+        counts = [
+            "Assignments",
+            "Quizzes",
+            "Projects"
+        ]
+        for part in counts:
+            prompt = f"Enter the number of {part}: "
+            while True:
+                cmd = IntegerForm.check_integer(self, input(prompt))
+                if not cmd:
+                    print("Please enter an integer!")
+                else:
+                    break
+            if part == "Assignments":
+                self.assignment_count = cmd
+            elif part == "Quizzes":
+                self.quiz_count = cmd
+            else:
+                self.project_count = cmd
             
     def add_grade(self):
         pass
