@@ -1,5 +1,6 @@
 from forms.string_form import StringForm
 from forms.integer_form import IntegerForm
+from core.student import Student
 
 class AppEngine:
     def __init__(self, grade_item=None):
@@ -10,6 +11,7 @@ class AppEngine:
         self.assignment_count = None
         self.quiz_count = None
         self.project_count = None
+        self.class_grades = {}
     
     def get_class_name(self):
         """sets class name for this session"""
@@ -45,6 +47,9 @@ class AppEngine:
                 self.quiz_count = cmd
             else:
                 self.project_count = cmd
+    
+    def get_student_information(self):
+        Student.run()
             
     def add_grade(self):
         pass
