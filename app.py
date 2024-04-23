@@ -32,10 +32,12 @@ class App:
             self.engine.exit()
             # Maybe add logic to save current work.
             # tinyDB?
-        elif cmd in ('-h', '-help'):
+        elif cmd in ('-h', '-help', 'help'):
             # call on a preformatted help
             # message
             self.engine.help()
+        elif cmd in ('a', 'add', 'add student'):
+            self.engine.get_student_information()
         else:
             self.engine.message = f'"{cmd}" is not a valid command.\n'
 
