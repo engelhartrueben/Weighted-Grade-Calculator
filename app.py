@@ -11,6 +11,9 @@ class App:
               " At any time, type '-h' for help!")
         # Would like to add a basic 2d render
         while True:
+            # This will have to change.
+            # No point in asking this once you get farther
+            # into the grading process
             prompt = "What would you like to do: "
             cmd = input(prompt)
             self.execute_command(cmd)
