@@ -7,17 +7,17 @@ class App:
     def run(self):
         """rotating function for user input"""
         # Add in intial welcomd message here
-        print("Welcome to Weighted Grade Calculator!"/
+        print("Welcome to Weighted Grade Calculator!"
               " At any time, type '-h' for help!")
         # Would like to add a basic 2d render
         while True:
-            prompt = "one thing or another"
+            prompt = "What would you like to do: "
             cmd = input(prompt)
             self.execute_command(cmd)
-            
+            print(self.engine.message)
+            self.engine.message = None
             # Exit logic
             if not self.engine.continue_execution:
-                # improper
                 break
 
     def execute_command(self, cmd):
@@ -40,6 +40,7 @@ if __name__ == '__main__':
         'Assignments',
         'Participation'
     ]
-    engine = AppEngine(grade_item=grade_items)
+    app = App(grade_items)
+    app.run()
 
 
