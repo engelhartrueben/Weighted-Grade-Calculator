@@ -4,25 +4,28 @@ their grades, days missing, and names
 """
 from forms.name_form import NameForm
 from forms.integer_form import IntegerForm
-from core.engine import AppEngine
 
-class Student(AppEngine):
-    def __init__(self):
+class Student:
+    def __init__(self, a_count, q_count, p_count):
         self.student_name = None
-        self.assignment_grades = None
+        self.assignemt_count = a_count
+        self.assignment_grades = []
         self.assignment_overall_grade = None
-        self.quiz_grades = None
+        self.quiz_count = q_count
+        self.quiz_grades = []
         self.quiz_overall_grade = None
-        self.project_grades = None
+        self.project_count = p_count
+        self.project_grades = []
         self.project_overall_grade = None
         self.absent_count = None
         self.absent_grade = None
+        self.run()
 
     def run(self):
-        self.student_name = self.get_student_name(self)
-        self.get_assignment_grades = self.get_assignment_grades(self, self.assignment_count)
-        self.get_quiz_grades = self.get_quiz_grades(self, self.quiz_count)
-        self.get_project_grades = self.get_project_grades(self, self.project_count)
+        self.student_name = self.get_student_name()
+        self.get_assignment_grades = self.get_assignment_grades(self.assignemt_count)
+        self.get_quiz_grades = self.get_quiz_grades(self.quiz_count)
+        self.get_project_grades = self.get_project_grades(self.project_count)
 
     def get_student_name(self):
         """sets students name"""
@@ -37,16 +40,37 @@ class Student(AppEngine):
                 # containing to this func
                 print("Invalid Student Name!")
             else:
-                self.name = cmd
+                self.student_name = cmd
     
     def get_assignment_grades(self, count):
-        pass
+        for i in range(0, count+1):
+            prompt = f"Enter grade for Assignment #{i}: "
+            while len(self.assignment_grades) < i:
+                cmd = IntegerForm.check_integer(self, input(prompt))
+                if not cmd:
+                    print("Please enter a float!")
+                else:
+                    self.assignment_grades.append(cmd)
 
     def get_quiz_grades(self, count):
-        pass
+        for i in range(0, count+1):
+            prompt = f"Enter grade for Quiz #{i}: "
+            while len(self.assignment_grades) < i:
+                cmd = IntegerForm.check_integer(self, input(prompt))
+                if not cmd:
+                    print("Please enter a float!")
+                else:
+                    self.quiz_grades.append(cmd)
 
     def get_project_grades(self, count):
-        pass
+        for i in range(0, count+1):
+            prompt = f"Enter grade for Project #{i}: "
+            while len(self.assignment_grades) < i:
+                cmd = IntegerForm.check_integer(self, input(prompt))
+                if not cmd:
+                    print("Please enter a float!")
+                else:
+                    self.project_grades.append(cmd)
 
     def get_absent_amount(self):
         prompt = f"How many class sessions did {self.student_name} miss this semester? "
