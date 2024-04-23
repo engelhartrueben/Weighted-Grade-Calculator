@@ -50,5 +50,12 @@ class Student(AppEngine):
         pass
 
     def get_absent_amount(self):
-        pass
+        prompt = f"How many class sessions did {self.student_name} miss this semester? "
+        while not self.absent_count:
+            cmd = IntegerForm.check_integer(self, input(prompt))
+            if not cmd:
+                print("Please enter an integer!")
+            else:
+                self.absent_count = cmd
+                break
 
