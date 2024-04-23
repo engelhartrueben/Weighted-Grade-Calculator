@@ -30,9 +30,12 @@ class AppEngine:
         prompt = "Enter Class Name: "
         while not self.class_name:
             cmd = input(prompt)
-            class_name = StringForm.check_string(cmd)
+            class_name = StringForm.check_string(self, cmd)
             if not class_name:
-                self.Message("Invalid Class Name!")
+                # Not entirely neccessary due to how
+                # check_string works. Not many things to 
+                # throw it off. Oh well
+                print("Invalid Class Name!")
             else:
                 self.class_name = class_name
             
