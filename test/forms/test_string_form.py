@@ -45,4 +45,3 @@ def test_string_form():
                 assert check.check_string(value[0]) == value[1]
             else:
                 assert check.check_string(value) == None
-test_string_form()
