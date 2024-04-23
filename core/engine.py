@@ -56,12 +56,6 @@ class AppEngine:
                                                               self.project_count)})
         self.class_grades = student_dict
         self.student_id+=1
-            
-    def add_grade(self):
-        pass
-
-    def calculate_grade(self):
-        pass
 
     def exit(self):
         """exits application"""
