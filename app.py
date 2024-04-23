@@ -8,7 +8,7 @@ class App:
         """rotating function for user input"""
         # Add in intial welcomd message here
         print("Welcome to Weighted Grade Calculator!"
-              " At any time, type '-h' for help!")
+              " At any time, type '-h' for help!\n")
         # Would like to add a basic 2d render
         while True:
             # This will have to change.
@@ -32,6 +32,8 @@ class App:
             # call on a preformatted help
             # message
             self.engine.help()
+        else:
+            self.engine.message = f'"{cmd}" is not a valid command.\n'
 
 if __name__ == '__main__':
     # Eventually would like this to be dynamic.
