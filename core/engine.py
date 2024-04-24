@@ -51,11 +51,17 @@ class AppEngine:
     
     def get_student_information(self):
         student_dict = self.class_grades
-        student_dict.update({self.student_id: Student(self.assignment_count,
+        student_dict.update({self.student_id : Student(self.assignment_count,
                                                               self.quiz_count,
                                                               self.project_count)})
         self.class_grades = student_dict
         self.student_id+=1
+    
+    def preview_class_grades(self):
+        message = f'Current Grades:'
+        for key in self.class_grades:
+            message = message + f'\n{self.class_grades[key]}'
+        self.message = message
 
     def exit(self):
         """exits application"""
