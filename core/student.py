@@ -92,4 +92,8 @@ class Student:
     
     def get_total_grade(self, assignment, quiz, project, absent):
         total = assignment + quiz + project + absent
-        return total
+        return round(total, 2)
+    
+    def __str__(self):
+        return f'{self.student_name} -- {self.total_grade}%'
+
