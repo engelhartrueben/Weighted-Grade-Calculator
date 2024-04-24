@@ -38,6 +38,8 @@ class App:
             self.engine.help()
         elif cmd in ('a', 'add', 'add student'):
             self.engine.get_student_information()
+        elif cmd in ('v', 'view', 'view grades'):
+            print(self.engine.preview_class_grades())
         else:
             self.engine.message = f'"{cmd}" is not a valid command.\n'
 
