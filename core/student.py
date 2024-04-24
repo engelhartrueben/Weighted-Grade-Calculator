@@ -24,6 +24,7 @@ class Student:
         self.absent_count = None
         self.absent_grade = None
         self.total_grade = None
+        self.letter_grade = None
         # Yeah idk if this is okay, but it works
         self.run()
 
@@ -41,11 +42,13 @@ class Student:
         # get absent count and calc grade
         self.absent_count = self.get_absent_amount()
         self.absent_grade = self.get_absent_grade(self.absent_count)
-
+        # gets total grade 
         self.total_grade = self.get_total_grade(self.assignment_overall_grade,
                                                 self.quiz_overall_grade,
                                                 self.project_overall_grade,
                                                 self.absent_grade)
+        # gets letter grade
+        self.letter_grade = self.get_letter_grade(self.total_grade)
 
     def get_student_name(self):
         """sets students name"""
@@ -93,6 +96,18 @@ class Student:
     def get_total_grade(self, assignment, quiz, project, absent):
         total = assignment + quiz + project + absent
         return round(total, 2)
+    
+    def get_letter_grade(self, total_grade):
+        if total_grade >= 92:
+            return 'A'
+        elif total_grade >= 86:
+            return 'B'
+        elif total_grade >= 76:
+            return 'C'
+        elif total_grade >= 64:
+            return 'D'
+        else:
+            return 'F'
     
     def __str__(self):
         return f'{self.student_name} -- {self.total_grade}%'
