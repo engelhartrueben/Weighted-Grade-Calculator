@@ -41,6 +41,8 @@ class App:
             self.engine.get_student_information()
         elif cmd in ('v', 'view', 'view grades'):
             print(self.engine.preview_class_grades())
+        elif cmd in ('change class name'):
+            self.engine.get_class_name()
         else:
             self.engine.message = f'"{cmd}" is not a valid command.\n'
 

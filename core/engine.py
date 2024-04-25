@@ -17,6 +17,10 @@ class AppEngine:
     def get_class_name(self):
         """sets class name for this session"""
         prompt = "Enter Class Name: "
+        # If this funciton is ever recalled
+        # Like when wanting to change the class name
+        # resets back to None
+        self.class_name = None
         while not self.class_name:
             class_name = StringForm.check_string(self, input(prompt))
             if not class_name:
