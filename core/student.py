@@ -109,6 +109,7 @@ class Student:
     
     def get_total_grade(self, assignment, quiz, project, absent):
         """adds all the grade types together"""
+        # pre weighted
         total = assignment + quiz + project + absent
         return round(total, 2)
     
