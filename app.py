@@ -13,13 +13,25 @@ class App:
         self.engine.get_class_name()
         # Gets counts of assignments, quizzes, and projects
         self.engine.get_counts()
+        did_input_last_student = None
 
         while True:
             # This will have to change.
             # No point in asking this once you get farther
             # into the grading process
-            prompt = "What would you like to do: "
+            last_student_logic = (did_input_last_student == None or did_input_last_student == True)
+            # Grabs the length of the class grades
+            if len(self.engine.class_grades) == 0 and did_input_last_student == None:
+                prompt = "Would you like to add your first student? (y/n) "
+            elif len(self.engine.class_grades) > 0 and last_student_logic:
+                prompt = "Would you like to add another student? (y/n)"
+            else:
+                prompt = "what would you like to do? "
             cmd = input(prompt)
+            if cmd in ('y'):
+                did_input_last_student = True
+            else:
+                did_input_last_student = False
             self.execute_command(cmd)
             if self.engine.message is not None:
                 print(self.engine.message)
@@ -29,7 +41,7 @@ class App:
                 break
 
     def execute_command(self, cmd):
-        if cmd in ('q', 'quit', 'exit'):
+        if cmd in ('-q', '-quit', '-exit'):
             self.engine.exit()
             # Maybe add logic to save current work.
             # tinyDB?
@@ -37,23 +49,26 @@ class App:
             # call on a preformatted help
             # message
             self.engine.help()
-        elif cmd in ('a', 'add', 'add student'):
+        elif cmd in ('y', 'add'):
             self.engine.get_student_information()
         elif cmd in ('v', 'view', 'view grades'):
             print(self.engine.preview_class_grades())
-        elif cmd in ('change class name'):
+        elif cmd == ('change class name'):
             self.engine.get_class_name()
         # Do not include these three in help
         # Have to first build out funcitonality
         # to go back and add assignments to previous
         # students, if this was changed after any inputs
         # currently killing this command, but still cool
-        elif cmd in ('change assignment amount') and len(self.engine.class_grades) == 0:
+        elif cmd == ('change assignment amount') and len(self.engine.class_grades) == 0:
             self.engine.get_counts('Assignments')
-        elif cmd in ('change quiz amount') and len(self.engine.class_grades) == 0:
+        elif cmd == ('change quiz amount') and len(self.engine.class_grades) == 0:
             self.engine.get_counts('Quizzes')
-        elif cmd in ('change project amount') and len(self.engine.class_grades) == 0:
+        elif cmd == ('change project amount') and len(self.engine.class_grades) == 0:
             self.engine.get_counts('Projects')
+        elif cmd == ('n'):
+            # Cheeky pass to do nothing
+            pass
         else:
             self.engine.message = f'"{cmd}" is not a valid command.\n'
 
