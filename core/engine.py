@@ -55,6 +55,15 @@ class AppEngine:
                 self.quiz_count = cmd
             else:
                 self.project_count = cmd
+        if len(counts) > 1:
+            prompt = (f"You have entered:"
+                      f"\nAssignments: {self.assignment_count}"
+                      f"\nQuizzes:     {self.quiz_count}"
+                      f"\nProjects:    {self.project_count}")
+            prompt = prompt + "\nIs this correct? (y/n) "
+            cmd = input(prompt)
+            if cmd in ('n'):
+                self.get_counts()
     
     def get_student_information(self):
         student_dict = self.class_grades
@@ -65,10 +74,15 @@ class AppEngine:
         self.student_id+=1
     
     def preview_class_grades(self):
-        message = f'Current Grades:'
-        for key in self.class_grades:
-            message = message + f'\n{self.class_grades[key]}'
-        self.message = message
+        """Simple preview of students grades"""
+        # Protection against no grades inputted
+        if len(self.class_grades) == 0:
+            self.message = "No grades inputted yet!"
+        else:
+            message = f'Current Grades:'
+            for key in self.class_grades:
+                message = message + f'\n{self.class_grades[key]}'
+            self.message = message
 
     def exit(self):
         """exits application"""
