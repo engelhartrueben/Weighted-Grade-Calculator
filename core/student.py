@@ -11,6 +11,7 @@ class Student:
                  q_count, 
                  p_count, 
                  student_name=None):
+        """This is what nightmares look like"""
         self.student_name = student_name
         self.assignemt_count = a_count
         self.assignment_grades = None
@@ -66,10 +67,14 @@ class Student:
                 return cmd
             
     def get_grades(self, type, count):
+        """gets grade per type"""
+        # Need to add protection for max integer amount
+        # also, these should be floats. Yikes
         grades = []
         for i in range(1, count+1):
             prompt = f"Enter grade for {type} #{i}: "
             while len(grades) < i:
+                # CHANGE TO FLOATS
                 cmd = IntegerForm.check_integer(self, input(prompt))
                 if not cmd:
                     print("Please enter a float!")
@@ -78,6 +83,7 @@ class Student:
         return grades
 
     def get_absent_amount(self):
+        """gets absent amount"""
         prompt = f"How many class sessions did {self.student_name} miss this semester? "
         while not self.absent_count:
             cmd = IntegerForm.check_integer(self, input(prompt))
@@ -87,6 +93,8 @@ class Student:
                 return cmd
     
     def get_absent_grade(self, amount):
+        """creates the participation grade"""
+        # Should probably change all these 'gets' to 'sets'
         if amount > 3 and amount < 9:
             return (10 - 2 * (amount - 3))
         elif amount <= 3:
@@ -95,14 +103,18 @@ class Student:
             return 0
 
     def get_weighted_grade(self, arr, weight):
+        """calculates the weighted grade per grade type of a student"""
         avg_grade = sum(arr) / len(arr)
         return avg_grade * weight
     
     def get_total_grade(self, assignment, quiz, project, absent):
+        """adds all the grade types together"""
         total = assignment + quiz + project + absent
         return round(total, 2)
     
     def get_letter_grade(self, total_grade):
+        """creates letter grade"""
+        # VERIFY AGAINST RUBRIC
         if total_grade >= 92:
             return 'A'
         elif total_grade >= 86:
@@ -115,5 +127,8 @@ class Student:
             return 'F'
     
     def __str__(self):
+        """for the view feature primarily"""
+        # This is mostly for the view feature
+        # Maybe spice this up a bit
         return f'{self.student_name} -- {self.total_grade}%'
 
