@@ -42,12 +42,12 @@ class Student:
         # get absent count and calc grade
         self.absent_count = self.get_absent_amount()
         self.absent_grade = self.get_absent_grade(self.absent_count)
-        # gets total grade 
+        # creates total grade 
         self.total_grade = self.get_total_grade(self.assignment_overall_grade,
                                                 self.quiz_overall_grade,
                                                 self.project_overall_grade,
                                                 self.absent_grade)
-        # gets letter grade
+        # creates letter grade
         self.letter_grade = self.get_letter_grade(self.total_grade)
 
     def get_student_name(self):
