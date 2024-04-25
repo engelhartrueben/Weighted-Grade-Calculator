@@ -31,13 +31,16 @@ class AppEngine:
             else:
                 self.class_name = class_name
     
-    def get_counts(self):
+    def get_counts(self, type=None):
         """gets total amount of counts of"""
-        counts = [
-            "Assignments",
-            "Quizzes",
-            "Projects"
-        ]
+        if type:
+            counts = [type]
+        else:
+            counts = [
+                "Assignments",
+                "Quizzes",
+                "Projects"
+            ]
         for part in counts:
             prompt = f"Enter the number of {part}: "
             while True:

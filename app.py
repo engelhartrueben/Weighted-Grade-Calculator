@@ -43,6 +43,17 @@ class App:
             print(self.engine.preview_class_grades())
         elif cmd in ('change class name'):
             self.engine.get_class_name()
+        # Do not include these three in help
+        # Have to first build out funcitonality
+        # to go back and add assignments to previous
+        # students, if this was changed after any inputs
+        # currently killing this command, but still cool
+        elif cmd in ('change assignment amount') and len(self.engine.class_grades) == 0:
+            self.engine.get_counts('Assignments')
+        elif cmd in ('change quiz amount') and len(self.engine.class_grades) == 0:
+            self.engine.get_counts('Quizzes')
+        elif cmd in ('change project amount') and len(self.engine.class_grades) == 0:
+            self.engine.get_counts('Projects')
         else:
             self.engine.message = f'"{cmd}" is not a valid command.\n'
 
