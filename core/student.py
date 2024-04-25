@@ -87,7 +87,12 @@ class Student:
                 return cmd
     
     def get_absent_grade(self, amount):
-            return .1 if amount > 3 else (.1 - .02 * (amount - 3))
+        if amount > 3 and amount < 9:
+            return (10 - 2 * (amount - 3))
+        elif amount <= 3:
+            return 10
+        else:
+            return 0
 
     def get_weighted_grade(self, arr, weight):
         avg_grade = sum(arr) / len(arr)
