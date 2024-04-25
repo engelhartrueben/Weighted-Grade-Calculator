@@ -21,7 +21,8 @@ class App:
             prompt = "What would you like to do: "
             cmd = input(prompt)
             self.execute_command(cmd)
-            print(self.engine.message)
+            if self.engine.message is not None:
+                print(self.engine.message)
             self.engine.message = None
             # Exit logic
             if not self.engine.continue_execution:
